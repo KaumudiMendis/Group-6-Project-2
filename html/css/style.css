@@ -1,0 +1,64 @@
+
+ 
+ body {
+   height: 100%;
+   padding: 0;
+   margin: 0;
+   background-color: #d3d2d2;
+ }
+
+
+ h1 {
+  text-align: center;
+  font-size: 70px;
+  color: black;
+}
+
+p {
+  text-align: center;
+  font-size: 20px;
+  color: black;
+}
+
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 30px; 
+}
+
+ .box-set {
+  position: relative;
+  background: rgb(139, 139, 139);
+}
+
+.box {
+  /* relative positioning */
+  position: fixed;
+  /* width: 150px;
+  height: 150px; */
+  background: #ffffff;
+  /* border: 1px solid rgb(105, 105, 105); */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.box-1 {
+  top: 250px;
+  left: 200px;
+  width: 550px;
+  height: 320px;
+}
+
+.box-2 {
+  top: 250px;
+  left: 1000px;
+  width: 550px;
+  height: 320px;
+}
+
+.box-3 {
+  top: 700px;
+  left: 200px;
+  width: 1350px;
+  height: 400px;
+}
