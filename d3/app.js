@@ -95,6 +95,7 @@ function makeResponsive() {
       circles.transition()
         .duration(1000)
         .attr("cx", d => newXScale(d[chosenXAxis]))
+        // .classed("circles")
 
       return circles;
     }
@@ -104,6 +105,7 @@ function makeResponsive() {
       circles.transition()
         .duration(1000)
         .attr("cy", d => newYScale(d[chosenYAxis]))
+        // .classed("circles")
 
       return circles;
     }
