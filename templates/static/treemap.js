@@ -1,4 +1,4 @@
-const api_key='1q9pUx5oxhzqhW2X3oNr';
+var api_key='1q9pUx5oxhzqhW2X3oNr';
 
 var ticker = ['ATVI','ADBE','ADP','ABND','ALGN','GOOGL','GOOG','AMZN','AMD','AEP','AMGN','ADI','ANSS','AAPL','AMAT','ASML','AZN','TEAM','ADSK',
 'BIDU','BIIB','BKNG','AVGO','CDNS','CHTR','CTAS','CSCO','CTSH','CMCSA','CEG'];
@@ -13,14 +13,15 @@ ticker.forEach(data => {
 
 function makeResponsive(){
 
-    var svgArea = d3.select("body").select("svg")
+    var TMsvgArea = d3.select("body").select("svg")
 
-    if(!svgArea.empty()){
-        svgArea.remove();
+    if(!TMsvgArea.empty()){
+        TMsvgArea.remove();
     }
 
-    var svgWidth = window.innerWidth/1.4;
-    var svgHeight = window.innerHeight/1.3;
+
+    var svgWidth = window.innerWidth/2;
+    var svgHeight = window.innerHeight/2;
 
     var margin = {
         top: 120,
@@ -33,13 +34,13 @@ function makeResponsive(){
     var width = svgWidth - margin.left - margin.right;
 
     // Append SVG element
-    var svg = d3
+    var svgTM = d3
         .select("#treemap")
         .append("svg")
         .attr("height", svgHeight)
         .attr("width", svgWidth);
 
-    var tmChartGroup = svg.append('g')
+    var tmChartGroup = svgTM.append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
     
 
@@ -93,38 +94,12 @@ function makeResponsive(){
                 
                 var treemapData = {name:"All Time",children: treemapYear};
 
-                var hierarchy = d3.hierarchy(treemapData)
-                              .sum(d=> d.value)
-                              .sort((a,b)=> b.value-a.value)
 
                 treemap = data => d3.treemap()
                   .tile(tile)
                 (d3.hierarchy(data)
                   .sum(d => d.value)
                   .sort((a, b) => b.value - a.value))
-                
-                console.log(treemap);
-
-                
-                // tmChartGroup.selectAll('rect')
-                //   .data(hierarchy.leaves())
-                //   .enter()
-                //   .append('rect')
-                //   .attr('x', d =>  d['x0'])
-                //   .attr('y', d => d['y0'])
-                //   .attr('width', d => d['x1'] - d['x0'])
-                //   .attr('height', d => d['y1'] - d['y0'])
-
-                // tmChartGroup.selectAll('text')
-                //   .data(hierarchy.leaves())
-                //   .enter()
-                //   .append('text')
-                //   .attr('x', d =>  d['x0'])
-                //   .attr('y', d => d['y0'])
-                //   .attr('width', d => d['x1'] - d['x0'])
-                //   .attr('height', d => d['y1'] - d['y0'])
-                //   .text(d => d.data.name)
-                //   .style('fill','white')
                 
 
                   treemap = dt => d3.treemap()
@@ -198,7 +173,7 @@ function makeResponsive(){
                   x.domain([d.x0, d.x1]);
                   y.domain([d.y0, d.y1]);
                 
-                  svg.transition()
+                  svgTM.transition()
                     .duration(750)
                     .call(t => group0.transition(t).remove()
                       .call(position, d.parent))
@@ -214,7 +189,7 @@ function makeResponsive(){
                   x.domain([d.parent.x0, d.parent.x1]);
                   y.domain([d.parent.y0, d.parent.y1]);
                 
-                  svg.transition()
+                  svgTM.transition()
                       .duration(750)
                       .call(t => group0.transition(t).remove()
                       .attrTween("opacity", () => d3.interpolate(1, 0))
@@ -223,8 +198,8 @@ function makeResponsive(){
                       .call(position, d.parent));
                  }
                 
-                  return svg.node();
-                }  
+                  return svgTM.node();
+                 
                 
                 
                 
@@ -237,6 +212,7 @@ function makeResponsive(){
                     child.y1 = y0 + child.y1 / height * (y1 - y0);
                   }
                  }
+                }
             });
         }
             
