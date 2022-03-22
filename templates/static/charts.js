@@ -1,4 +1,3 @@
-var api_key='1q9pUx5oxhzqhW2X3oNr';
 
 var ticker = ['ATVI','ADBE','ADP','ABNB','ALGN','GOOGL','GOOG','AMZN','AMD','AEP','AMGN','ADI','ANSS','AAPL','AMAT','ASML','AZN','TEAM','ADSK',
 'BIDU','BIIB','BKNG','AVGO','CDNS','CHTR','CTAS','CSCO','CTSH','CMCSA','CEG'];
@@ -23,7 +22,7 @@ function makeResponsive(){
     var box = document.querySelector('.box')
 
     var svgWidth = box.offsetWidth;
-    var svgHeight = box.offsetHeight;
+    var svgHeight = box.offsetHeight/1.2;
 
     var margin = {
         top: 50,

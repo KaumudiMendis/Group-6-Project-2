@@ -25,10 +25,10 @@ def home():
 def scrape():
 
     # Run the scrape function
-    nasdaq_data = scrape_nasdaq.scrape_info()
+    nasdaq_scrape = scrape_nasdaq.scrape_info()
 
     # Insert the record
-    mongo.db.collection.update_one({}, {"$set": nasdaq_data}, upsert=True)
+    mongo.db.collection.update_one({}, {"$set": nasdaq_scrape}, upsert=True)
 
     # Redirect back to home page
     return redirect("/")

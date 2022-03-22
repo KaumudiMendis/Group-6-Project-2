@@ -2,8 +2,10 @@
   
     //three JS files that need to be loaded one after the other
     var libs = [
-        "../templates/static/time-series.js",
-        "../templates/static/treemap.js"
+        "../templates/static/config.js",
+        "../templates/static/charts.js",
+        "../templates/static/anime.js"
+
 
     ];
     

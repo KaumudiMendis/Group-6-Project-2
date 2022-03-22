@@ -10,7 +10,10 @@ def scrape_info():
 
     nd_100_df=pd.read_html(wiki_url)[3] #3 returns the table we are searching for
 
-    nd_100_json = nd_100_df.to_json()
+
+    nd_100_html = nd_100_df.to_html()
+
+    nasdaq_data = {"table":nd_100_html}
 
     # Return results
-    return nd_100_json
+    return nasdaq_data
